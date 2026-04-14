@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>|  تسجيل الدخول  |</title>
+    <link rel="stylesheet" href="one.css">
+</head>
+<body>
+    <div class="space-container">
+        <div class="stars"></div>
+        
+        <div class="login-card">
+            <h2>تسجيل الدخول</h2>
+            <form>
+                <div class="input-group">
+                    <input type="text" required id="fullName">
+                    <label>اسم المستخدم</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" required>
+                    <label>كلمة المرور</label>
+                </div>
+                <button type="submit" class="login-btn">انطلاق</button>
+            </form>
+            <p class="signup-link">ليس لديك حساب؟ <a href="one1.html">إنشاء حساب</a></p>
+        </div>
+    </div>
+    <script>
+    const signupForm = document.querySelector('form');
+
+    signupForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('fullName').value.trim();
+    const email = document.getElementById('regEmail').value.trim().toLowerCase();
+    const password = document.getElementById('regPass').value.trim();
+
+    if (password.length < 6) {
+        alert("كلمة المرور ضعيفة! يجب أن تكون 6 أحرف على الأقل.");
+        return;
+    }
+
+    const userData = {
+        name: name,
+        email: email,
+        password: password
+    };
+
+
+    localStorage.setItem('userAccount', JSON.stringify(userData));
+
+    alert("تم إنشاء حسابك الفضائي بنجاح! جاري الانتقال لصفحة الدخول...");
+    
+    setTimeout(() => {
+        window.location.href = 'login.html'; 
+    }, 1000);
+});</script>
+</body>
+</html>
